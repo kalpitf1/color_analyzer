@@ -5,8 +5,8 @@ import './App.css'
 
 function App() {
   return (
-    <>
-      <header className="flex items-center justify-between px-6 py-4 bg-white border-b">
+    <div className='flex flex-col h-screen'>
+      <header className="flex items-center justify-between px-6 py-4 bg-stone-100 border-b">
         <div className="flex items-center space-x-4">
           {/* <Image src="/placeholder.svg" alt="Logo" width={40} height={40} className="rounded-lg" /> */}
           <h1 className="text-2xl font-bold">Color Analyzer</h1>
@@ -18,7 +18,7 @@ function App() {
         </nav>
       </header>
 
-      <main className="flex-grow flex flex-col items-center justify-center p-6 bg-gray-50">
+      <main className="flex-grow flex flex-col items-center justify-center p-6 bg-gradient-to-br from-fuchsia-100 to-green-100">
         <h2 className="text-4xl font-bold text-center mb-4">Start Korean Color Analysis</h2>
         <p className="text-xl text-gray-600 text-center mb-8">
           100% automatic and free
@@ -35,20 +35,20 @@ function App() {
         </div>
       </main>
 
-      <footer className="border-t border-gray-200 py-4 px-6">
-      <div className="container mx-auto flex justify-between items-center">
-        <p className="text-sm text-gray-600">
-          © 2024 Color Analyzer. All rights reserved.
-        </p>
-        <div className="flex space-x-4">
-          <a href="#" className="text-gray-400 hover:text-gray-600">
-            <Github size={20} />
-            <span className="sr-only">GitHub</span>
-          </a>
+      <footer className="border-t border-gray-200 py-4 px-6 bg-stone-100">
+        <div className="container mx-auto flex justify-between items-center">
+          <p className="text-sm text-gray-600">
+            © 2024 Color Analyzer. All rights reserved.
+          </p>
+          <div className="flex space-x-4">
+            <a href="#" className="text-gray-400 hover:text-gray-600">
+              <Github size={20} />
+              <span className="sr-only">GitHub</span>
+            </a>
+          </div>
         </div>
-      </div>
-    </footer>
-    </>
+      </footer>
+    </div>
   )
 }
 
