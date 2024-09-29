@@ -6,6 +6,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 function App() {
+  function handleUploadedFile(file) {
+    if (file.length != 1) {
+      alert('Please submit only 1 image in the formats: ".jpeg", ".jpg", or ".png"');
+      return
+    }
+    console.log(file)
+  }
 
   return (
     <div className='flex flex-col h-screen'>
@@ -19,7 +26,13 @@ function App() {
           100% automatic and free
         </p>
         <div className="w-full max-w-xl bg-white rounded-lg shadow-lg p-8">
-          <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+          <Dropzone
+            accept={{
+              "image/jpeg": [".jpeg", ".jpg"],
+              "image/png": [".png"]
+            }}
+            onDrop={acceptedFiles => handleUploadedFile(acceptedFiles)}
+          >
             {({getRootProps, getInputProps}) => (
               <section>
                 <div {...getRootProps()}>
