@@ -1,17 +1,50 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import { Upload } from "lucide-react"
 import Dropzone from 'react-dropzone'
+import axios from 'axios'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
 function App() {
+  const [myFile, setMyFile] = useState(null);
+
   function handleUploadedFile(file) {
     if (file.length != 1) {
       alert('Please submit only 1 image in the formats: ".jpeg", ".jpg", or ".png"');
       return
     }
     console.log(file)
+    setMyFile(file[0])
+    sendImageToServer()
+  }
+
+  function sendImageToServer() {
+    console.log('from sendImageToServer: ', myFile)
+    let formData = new FormData();
+
+    formData.append("image", myFile);
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0]+ ', ' + pair[1]);
+    }
+
+    console.log(formData);
+
+    axios({
+      url: "http://localhost:3000/upload-file",
+      method: "POST",
+      headers: {
+          // TODO: add auth
+          // authorization: "your token comes here",
+
+          'Content-Type': 'multipart/form-data'
+      },
+
+      data: formData,
+    })
+    .then((res) => { console.log(res) })
+    .catch((err) => { console.log(err) });
   }
 
   return (
