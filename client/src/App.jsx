@@ -16,6 +16,10 @@ function App() {
     }
     console.log(file)
     setMyFile(file[0])
+    if (!file) {
+      alert("Something went wrong. Please try uploading again.");
+      return;
+    }
     sendImageToServer()
   }
 
